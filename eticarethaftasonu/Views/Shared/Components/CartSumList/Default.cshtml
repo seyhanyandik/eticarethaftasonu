@@ -1,0 +1,34 @@
+﻿@model eticarethaftasonu.Dto.CartViewModel
+
+<div class="sinlge-bar shopping">
+	<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">@Model.CartItems.Count</span></a>
+	<!-- Shopping Item -->
+	@if(Model.CartItems.Count>0)
+	{
+	<div class="shopping-item">
+		<div class="dropdown-cart-header">
+			<span>@Model.CartItems.Count</span>
+			<a href="#">Sepeti Göster</a>
+		</div>
+		<ul class="shopping-list">
+			@foreach(var item in Model.CartItems)
+			{
+			<li>
+				<a href="/Cart/Remove/@item.ProductId" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+				<a class="cart-img" href="#"><img src="/Urunler/@item.Image" alt="#"></a>
+				<h4><a href="#">@item.ProductName</a></h4>
+				<p class="quantity">@item.Quantity - <span class="amount">@item.Price</span></p>
+			</li>
+			}
+		</ul>
+		<div class="bottom">
+			<div class="total">
+				<span>Toplam</span>
+				<span class="total-amount">@Model.CartItems.Sum(x=>x.Quantity*x.Price).ToString()</span>
+			</div>
+			<a href="/Cart/Index" class="btn animate">Sepet Git</a>
+		</div>
+	</div>
+	}
+	<!--/ End Shopping Item -->
+</div>

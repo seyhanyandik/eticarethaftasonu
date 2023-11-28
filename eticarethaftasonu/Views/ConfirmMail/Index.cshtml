@@ -1,0 +1,15 @@
+﻿@model ConfirmMailViewModel
+
+<h1>Mail Onay Formu</h1>
+<form method="post" asp-action="Index" asp-controller="ConfirmMail">
+    <h3>Onay İçin Gönderilen Email Adresi:@ViewBag.v</h3>
+    <br />
+    <label>Kullanıcı Numarası</label>
+    <input  type="text" class="form-control" value="@ViewBag.v" asp-for="Mail" />
+    <br />
+    <label>Mail Adresinize Gelen 6 Haneli Kod numarasını Giriniz </label>
+    <input type="text" class="form-control" asp-for="ConfirmCode" />
+    <br />
+    <button type="submit" class="btn btn-primary">Hesabı Aktifleştir</button>
+
+</form>

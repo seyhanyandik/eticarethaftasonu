@@ -1,0 +1,36 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<a href="/Category/Create"><i class="fa-solid fa-plus"></i></a>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th scope="col">#</th>
+            <th scope="col">Kategori Adı</th>
+            <th scope="col">Düzeltme</th>
+            <th scope="col">Silme</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@i</th>
+                <td>@item.CategoryName</td>
+                <td><a href="/Category/Edit/@item.CategoryId"><i class="fa-solid fa-user-pen"></i></a></td>
+                <td><a href="/Category/Delete/@item.CategoryId"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+
+            
+                i++;
+            
+        }
+
+    </tbody>
+</table>
